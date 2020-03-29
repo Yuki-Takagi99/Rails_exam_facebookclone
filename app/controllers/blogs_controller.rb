@@ -8,12 +8,14 @@ class BlogsController < ApplicationController
   end
   def create
     @blog = Blog.new(blog_params)
-    if @blog.save
-      #ブログ一覧画面へ遷移
-      redirect_to blogs_path, notice: "ブログを作成しました！"
-    else
-      #入力フォームを再度描画
+    if params[:back]
       render :new
+    else
+      if @blog.save
+        redirect_to blogs_path, notice: "ブログを作成しました！"
+      else
+        render :new
+      end
     end
   end
   def show
@@ -35,6 +37,11 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path, notice:"ブログを削除しました！"
+  end
+  def confirm
+    @blog = Blog.new(blog_params)
+    #@blog.invalidでバリデーションが失敗したらnew画面に遷移
+    render :new if @blog.invalid?
   end
   private
   def blog_params
