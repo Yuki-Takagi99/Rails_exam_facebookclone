@@ -6,12 +6,14 @@
     <th>タイトル</th>
     <th>内容</th>
     <th>画像</th>
+    <th>投稿ユーザー</th>
   </tr>
 <% @blogs.each do |blog| %>
   <tr>
     <td><%= blog.title %></td>
     <td><%= blog.content %></td>
     <td><img src="<%= blog.image %>"></td>
+    <td><%= blog.user.name %></td>
     <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
     <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
     <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>

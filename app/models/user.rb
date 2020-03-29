@@ -5,4 +5,6 @@ class User < ApplicationRecord
   before_validation { email.downcase! } #バリデーション判定の前に小文字に変換
   has_secure_password # passwordとpassword_confirmationを利用可能にする
   validates :password, presence: true, length: { minimum: 6 }
+  # アソシエーションの定義
+  has_many :blogs
 end

@@ -11,7 +11,8 @@ class BlogsController < ApplicationController
     end
   end
   def create
-    @blog = Blog.new(blog_params)
+    #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    @blog = current_user.blogs.build(blog_params)
     if params[:back]
       render :new
     else
@@ -43,7 +44,8 @@ class BlogsController < ApplicationController
     redirect_to blogs_path, notice:"ブログを削除しました！"
   end
   def confirm
-    @blog = Blog.new(blog_params)
+    #現在ログインしているuserのidを、blogのuser_idカラムに挿入する
+    @blog = current_user.blogs.build(blog_params)
     #@blog.invalidでバリデーションが失敗したらnew画面に遷移
     render :new if @blog.invalid?
   end
