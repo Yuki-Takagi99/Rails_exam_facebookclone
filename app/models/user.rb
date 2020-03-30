@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   # アソシエーションの定義
   has_many :blogs
+  has_many :favorites, dependent: :destroy
 end

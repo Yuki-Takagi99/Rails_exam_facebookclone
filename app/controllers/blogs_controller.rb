@@ -24,6 +24,8 @@ class BlogsController < ApplicationController
     end
   end
   def show
+    # ログインしているユーザがそのブログをお気に入り登録しているかどうかを判断
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     # @blog = Blog.find(params[:id])
   end
   def edit
