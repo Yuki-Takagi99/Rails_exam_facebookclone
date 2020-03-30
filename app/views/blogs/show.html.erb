@@ -2,6 +2,7 @@
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 <p>画像:
+  <% #画像が添付されている場合は表示させ、添付されていない場合は表示しない
   <% if @blog.image.url.present? %>
     <%= image_tag @blog.image.url %>
   <% else %>
