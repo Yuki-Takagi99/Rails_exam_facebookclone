@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # ユーザ新規登録に成功した場合の処理
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       # ユーザ新規登録に失敗した場合の処理
