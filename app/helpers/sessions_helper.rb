@@ -6,4 +6,9 @@ module SessionsHelper
     # ログインしていればtrue,その他ならfalseを返す
     current_user.present?
   end
+  def must_login
+    if current_user.blank?
+      redirect_to new_session_path
+    end
+  end
 end

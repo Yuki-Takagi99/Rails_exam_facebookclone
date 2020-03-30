@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_action :must_login, only: [:show, :edit, :update, :destroy]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   def index
     @blogs = Blog.all
@@ -25,8 +26,7 @@ class BlogsController < ApplicationController
   end
   def show
     # ログインしているユーザがそのブログをお気に入り登録しているかどうかを判断
-    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
-    # @blog = Blog.find(params[:id])
+      @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
   def edit
     # @blog = Blog.find(params[:id])
