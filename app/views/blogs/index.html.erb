@@ -1,24 +1,41 @@
-<h1>ブログ一覧</h1>
+<div class="container">
+<div class="alert alert-info alert-dismissible">
+  <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <b>2020.3.25</b> 会社概要を更新しました。<br>
+  <b>2020.3.31</b> 利用規約を更新しました。
+</div>
+<div class="text-center"><h1>ブログ一覧</h1></div>
 <p><%= notice %></p>
-<p>みんなが投稿したブログを見てみよう！</p>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>画像</th>
-    <th>投稿ユーザー</th>
-  </tr>
+<div class="text-center"><h2>みんなの投稿を見てみよう！</h2></div>
+<%= link_to '新しくブログを投稿する', new_blog_path, class: "btn btn-info" %>
+<div class="table-responsive">
+<div class="table">
+<table class=" table-bordered table-hover table-condensed">
+  <thead>
+    <tr>
+      <th class="text-center">タイトル</th>
+      <th class="text-center">内容</th>
+      <th class="text-center">画像</th>
+      <th class="text-center">投稿ユーザー</th>
+      <th class="text-center">詳細確認</th>
+      <th class="text-center">ブログ編集</th>
+      <th class="text-center">ブログ削除</th>
+    </tr>
+  </thead>
 <% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><img src="<%= blog.image %>"></td>
-    <td><%= blog.user.name %></td>
-    <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-    <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
-    <td><%= link_to 'ブログを削除する', blog_path(blog.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td><%= blog.title %></td>
+      <td><%= blog.content %></td>
+      <td><img src="<%= blog.image %>" class="img-responsive"></td>
+      <td><%= blog.user.name %></td>
+      <td><%= link_to '詳細を確認する', blog_path(blog.id), class: "btn btn-success btn-lg" %></td>
+      <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), class: "btn btn-success btn-lg" %></td>
+      <td><%= link_to 'ブログを削除する', blog_path(blog.id), class: "btn btn-success btn-lg", method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    </tr>
+  </tbody>
 <% end %>
 </table>
-<br>
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+</div>
+</div>
+</div>

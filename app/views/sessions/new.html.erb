@@ -1,3 +1,7 @@
+<div class="alert alert-danger alert-dismissible">
+  <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <b>メールアドレスとパスワードを入力してください</b><br>
+</div>
 <h1>ログイン</h1>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <%= f.label :email %>

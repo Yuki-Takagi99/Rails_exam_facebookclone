@@ -9,16 +9,37 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+    <div id="wrapper">
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">fbClone</a>
+        </div>
+    <ul class="nav navbar-nav navbar-right">
     <% if logged_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <li class="#"><%= link_to "マイページ", user_path(current_user.id) %></li>
+      <li class="#"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+      <li><form class="navbar-form">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="検索キーワードは？">
+        </div>
+        <button type="submit" class="btn btn-info">検索</button>
+      </form></li>
     <% else %>
-      <%= link_to "サインアップ", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
+      <li class="#"><%= link_to "サインアップ", new_user_path %></li>
+      <li class="#"><%= link_to "ログイン", new_session_path %></li>
     <% end %>
-   <%= yield %>
+    </ul>
+    </div>
+    </nav>
+  <div class="container">
+    <div class="contents">
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <br><br><p>© All rights reserved by Yuki.T</p><br><br>
+  </footer>
+  </div>
  </body>
 </html>

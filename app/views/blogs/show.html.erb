@@ -3,11 +3,11 @@
 <p>内容: <%= @blog.content %></p>
 <p>画像:
   <% #画像が添付されている場合は表示させ、添付されていない場合は表示しない %>
-  <% if @blog.image.url.present? %>
-    <%= image_tag @blog.image.url %>
-  <% else %>
-    <%= '画像なし' %>
-  <% end %></p>
+<% if @blog.image.url.present? %>
+  <%= image_tag @blog.image.url %>
+<% else %>
+  <%= '画像なし' %>
+<% end %></p>
 
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
@@ -17,4 +17,4 @@
   <% end %>
 <% end %>
 
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+<%= link_to "ブログ一覧画面にもどる", blogs_path, class: 'btn btn-info' %>

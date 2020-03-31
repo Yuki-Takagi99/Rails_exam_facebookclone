@@ -15,7 +15,7 @@
   </div>
   <div class="blog_title">
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content %><br>
   <dev class="field">
     <%= form.label :image %>
     <!-- 確認画面から新規作成画面に戻った時に、 -->
@@ -28,4 +28,4 @@
     <%= form.submit %>
   </div>
 <% end %>
-<%= link_to "ブログ一覧画面にもどる", blogs_path %>
+<%= link_to "ブログ一覧画面にもどる", blogs_path, class: 'btn btn-info' %>
